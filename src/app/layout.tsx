@@ -21,8 +21,9 @@ const display = Cormorant_Garamond({
 const store = getStoreName();
 
 export const metadata: Metadata = {
-  title: store ? `${store} — Loja` : "Loja",
-  description: "Loja de beleza e bem-estar — cabelos, perfumaria, skin care e mais",
+  title: `${store} — Beleza e bem-estar`,
+  description: "Ma Belle Paris — beleza, elegância e bem-estar com o charme de Paris.",
+  icons: { icon: "/logo.png", apple: "/logo.png" },
 };
 
 export default async function RootLayout({

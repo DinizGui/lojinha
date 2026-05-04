@@ -3,6 +3,7 @@
 import type { Category } from "@/lib/catalog";
 import { useCart } from "@/context/CartContext";
 import { getStoreName } from "@/lib/config";
+import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 
@@ -22,19 +23,27 @@ export function Header({
       <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-3">
         <Link
           href="/"
-          className="flex min-h-11 min-w-11 items-center text-[#5c4a42] sm:min-w-0"
-          aria-label={storeName ? `Início — ${storeName}` : "Início"}
+          className="group flex min-h-11 items-center gap-2.5 text-[#5c4a42] transition-opacity hover:opacity-90"
+          aria-label={`Início — ${storeName}`}
         >
-          {storeName ? (
-            <span className="font-[family-name:var(--font-display)] text-xl font-semibold tracking-tight sm:text-2xl">
-              {storeName}
-            </span>
-          ) : (
-            <span
-              className="block h-10 w-10 rounded-full border border-[#d4c4bb] bg-[#f0e8e2]"
-              aria-hidden
+          <span className="relative inline-block h-11 w-11 overflow-hidden rounded-full ring-1 ring-[#e0d5cd] transition-transform duration-300 group-hover:scale-105 sm:h-12 sm:w-12">
+            <Image
+              src="/logo.png"
+              alt=""
+              fill
+              priority
+              sizes="48px"
+              className="object-cover"
             />
-          )}
+          </span>
+          <span className="hidden flex-col leading-tight sm:flex">
+            <span className="font-[family-name:var(--font-display)] text-base font-semibold tracking-[0.18em] text-[#3d2f29] sm:text-lg">
+              MA BELLE
+            </span>
+            <span className="text-[10px] font-medium uppercase tracking-[0.4em] text-[#a89890]">
+              Paris
+            </span>
+          </span>
         </Link>
 
         <nav className="hidden items-center gap-1 lg:flex">

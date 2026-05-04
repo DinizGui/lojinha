@@ -1,9 +1,8 @@
-/**
- * Nome da loja — opcional via `NEXT_PUBLIC_STORE_NAME`.
- * Por padrão fica vazio até você configurar.
- */
+const DEFAULT_STORE_NAME = "Ma Belle Paris";
+
 export function getStoreName(): string {
-  return process.env.NEXT_PUBLIC_STORE_NAME?.trim() ?? "";
+  const env = process.env.NEXT_PUBLIC_STORE_NAME?.trim();
+  return env && env.length > 0 ? env : DEFAULT_STORE_NAME;
 }
 
 /** DDI + DDD + número (somente dígitos). Padrão: 41 99954-0027 → 5541999540027 */
