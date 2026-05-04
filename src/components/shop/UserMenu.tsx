@@ -1,0 +1,91 @@
+"use client";
+
+import { signOut, useSession } from "next-auth/react";
+import Link from "next/link";
+import { useEffect, useRef, useState } from "react";
+
+export function UserMenu() {
+  const { data: session, status } = useSession();
+  const [open, setOpen] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    function onDoc(e: MouseEvent) {
+      if (!ref.current) return;
+      if (!ref.current.contains(e.target as Node)) setOpen(false);
+    }
+    document.addEventListener("mousedown", onDoc);
+    return () => document.removeEventListener("mousedown", onDoc);
+  }, []);
+
+  if (status === "loading") {
+    return <span className="h-9 w-20 animate-pulse rounded-xl bg-[#f0e8e2]" aria-hidden />;
+  }
+
+  if (!session?.user) {
+    return (
+      <Link
+        href="/login"
+        className="flex items-center gap-1.5 rounded-xl border border-[#e0d5cd] bg-white px-3 py-2 text-sm font-medium text-[#5c4a42] transition hover:border-[#c4a69a]"
+      >
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+          <circle cx="12" cy="7" r="4" />
+        </svg>
+        Entrar
+      </Link>
+    );
+  }
+
+  const name = session.user.name ?? session.user.email ?? "";
+  const initial = name.trim().charAt(0).toUpperCase();
+  const firstName = name.split(/\s+/)[0];
+
+  return (
+    <div ref={ref} className="relative">
+      <button
+        type="button"
+        onClick={() => setOpen((v) => !v)}
+        className="flex items-center gap-2 rounded-xl border border-[#e0d5cd] bg-white px-2.5 py-1.5 text-sm font-medium text-[#5c4a42] transition hover:border-[#c4a69a]"
+        aria-haspopup="menu"
+        aria-expanded={open}
+      >
+        <span className="flex h-7 w-7 items-center justify-center rounded-full bg-gradient-to-br from-[#c4a69a] to-[#8b7355] text-xs font-semibold text-white">
+          {initial || "?"}
+        </span>
+        <span className="hidden max-w-[8rem] truncate sm:inline">{firstName}</span>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={`transition-transform ${open ? "rotate-180" : ""}`}>
+          <path d="m6 9 6 6 6-6" />
+        </svg>
+      </button>
+
+      {open && (
+        <div
+          role="menu"
+          className="absolute right-0 z-50 mt-2 w-56 overflow-hidden rounded-xl border border-[#e8ddd6] bg-white shadow-lg ring-1 ring-black/[0.04]"
+        >
+          <div className="border-b border-[#f0e8e2] px-3 py-2.5">
+            <p className="truncate text-sm font-medium text-[#3d2f29]">{name}</p>
+            <p className="truncate text-xs text-[#a89890]">{session.user.email}</p>
+          </div>
+          <Link
+            href="/conta"
+            onClick={() => setOpen(false)}
+            className="flex items-center gap-2 px-3 py-2 text-sm text-[#5c4a42] transition hover:bg-[#faf7f5]"
+            role="menuitem"
+          >
+            Minha conta
+          </Link>
+          <button
+            type="button"
+            onClick={() => signOut({ callbackUrl: "/" })}
+            className="flex w-full items-center gap-2 border-t border-[#f0e8e2] px-3 py-2 text-left text-sm text-[#5c4a42] transition hover:bg-[#faf7f5]"
+            role="menuitem"
+          >
+            Sair
+          </button>
+        </div>
+      )}
+    </div>
+  );
+}

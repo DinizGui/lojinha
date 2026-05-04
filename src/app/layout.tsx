@@ -1,3 +1,4 @@
+import { AuthProvider } from "@/components/AuthProvider";
 import { ShopShell } from "@/components/shop/ShopShell";
 import { CartProvider } from "@/context/CartContext";
 import { getAllCategories } from "@/lib/data";
@@ -44,9 +45,11 @@ export default async function RootLayout({
       className={`${dmSans.variable} ${display.variable} h-full antialiased`}
     >
       <body className="flex min-h-full flex-col bg-[#faf7f5] font-sans text-[#2c2420]">
-        <CartProvider>
-          <ShopShell categories={categoryNav}>{children}</ShopShell>
-        </CartProvider>
+        <AuthProvider>
+          <CartProvider>
+            <ShopShell categories={categoryNav}>{children}</ShopShell>
+          </CartProvider>
+        </AuthProvider>
       </body>
     </html>
   );

@@ -3,6 +3,7 @@
 import type { Category } from "@/lib/catalog";
 import { useCart } from "@/context/CartContext";
 import { getStoreName } from "@/lib/config";
+import { UserMenu } from "@/components/shop/UserMenu";
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
@@ -74,13 +75,14 @@ export function Header({
               )}
             </svg>
           </button>
+          <UserMenu />
           <button
             type="button"
             onClick={onOpenCart}
             className="relative flex items-center gap-2 rounded-xl border border-[#e0d5cd] bg-white px-3 py-2 text-sm font-medium text-[#5c4a42] transition hover:border-[#c4a69a]"
           >
             <span aria-hidden>🛒</span>
-            Carrinho
+            <span className="hidden sm:inline">Carrinho</span>
             {totalQty > 0 && (
               <span className="absolute -right-1 -top-1 flex h-5 min-w-5 items-center justify-center rounded-full bg-[#8b7355] px-1 text-xs text-white">
                 {totalQty > 99 ? "99+" : totalQty}

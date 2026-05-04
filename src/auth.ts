@@ -1,4 +1,4 @@
-import NextAuth from "next-auth";
+import NextAuth, { type NextAuthConfig } from "next-auth";
 import Credentials from "next-auth/providers/credentials";
 import Google from "next-auth/providers/google";
 import bcrypt from "bcryptjs";
@@ -52,38 +52,45 @@ async function linkGoogleToCustomer(customerId: string, googleId: string, image:
   );
 }
 
-export const { handlers, auth, signIn, signOut } = NextAuth({
-  session: { strategy: "jwt" },
-  pages: { signIn: "/login" },
-  providers: [
-    Credentials({
-      name: "Email e senha",
-      credentials: {
-        email: { label: "Email", type: "email" },
-        password: { label: "Senha", type: "password" },
-      },
-      async authorize(creds) {
-        const email = String(creds?.email ?? "").trim().toLowerCase();
-        const password = String(creds?.password ?? "");
-        if (!email || !password) return null;
-        const customer = await findCustomerByEmail(email);
-        if (!customer || !customer.password_hash) return null;
-        const ok = await bcrypt.compare(password, customer.password_hash);
-        if (!ok) return null;
-        return {
-          id: customer.id,
-          email: customer.email,
-          name: customer.name,
-          image: customer.image_url ?? undefined,
-        };
-      },
-    }),
+const providers: NextAuthConfig["providers"] = [
+  Credentials({
+    name: "Email e senha",
+    credentials: {
+      email: { label: "Email", type: "email" },
+      password: { label: "Senha", type: "password" },
+    },
+    async authorize(creds) {
+      const email = String(creds?.email ?? "").trim().toLowerCase();
+      const password = String(creds?.password ?? "");
+      if (!email || !password) return null;
+      const customer = await findCustomerByEmail(email);
+      if (!customer || !customer.password_hash) return null;
+      const ok = await bcrypt.compare(password, customer.password_hash);
+      if (!ok) return null;
+      return {
+        id: customer.id,
+        email: customer.email,
+        name: customer.name,
+        image: customer.image_url ?? undefined,
+      };
+    },
+  }),
+];
+
+if (process.env.GOOGLE_CLIENT_ID && process.env.GOOGLE_CLIENT_SECRET) {
+  providers.push(
     Google({
       clientId: process.env.GOOGLE_CLIENT_ID,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
       allowDangerousEmailAccountLinking: true,
-    }),
-  ],
+    })
+  );
+}
+
+export const { handlers, auth, signIn, signOut } = NextAuth({
+  session: { strategy: "jwt" },
+  pages: { signIn: "/login" },
+  providers,
   callbacks: {
     async signIn({ user, account, profile }) {
       if (account?.provider !== "google") return true;
