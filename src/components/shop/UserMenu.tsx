@@ -4,10 +4,28 @@ import { signOut, useSession } from "next-auth/react";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 
-export function UserMenu() {
+const iconPerson = (
+  <svg
+    width={20}
+    height={20}
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth={1.35}
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    aria-hidden
+  >
+    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+    <circle cx="12" cy="7" r="4" />
+  </svg>
+);
+
+export function UserMenu({ variant = "default" }: { variant?: "default" | "minimal" }) {
   const { data: session, status } = useSession();
   const [open, setOpen] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
+  const minimal = variant === "minimal";
 
   useEffect(() => {
     function onDoc(e: MouseEvent) {
@@ -19,21 +37,31 @@ export function UserMenu() {
   }, []);
 
   if (status === "loading") {
-    return <span className="h-9 w-9 animate-pulse rounded-xl bg-[#f0e8e2] sm:w-20" aria-hidden />;
+    return (
+      <span
+        className={
+          minimal
+            ? "h-9 w-9 shrink-0 animate-pulse rounded-full bg-[#ede4dc]"
+            : "h-9 w-9 animate-pulse rounded-xl bg-[#f0e8e2] sm:w-20"
+        }
+        aria-hidden
+      />
+    );
   }
 
   if (!session?.user) {
     return (
       <Link
         href="/login"
-        className="flex items-center gap-1.5 rounded-xl border border-[#e0d5cd] bg-white px-2.5 py-2 text-sm font-medium text-[#5c4a42] transition hover:border-[#c4a69a] sm:px-3"
+        className={
+          minimal
+            ? "flex shrink-0 items-center justify-center rounded-full p-2 text-[#5c4a42] transition hover:bg-[#f0e8e2]"
+            : "flex items-center gap-1.5 rounded-xl border border-[#e0d5cd] bg-white px-2.5 py-2 text-sm font-medium text-[#5c4a42] transition hover:border-[#c4a69a] sm:px-3"
+        }
         aria-label="Entrar"
       >
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
-          <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
-          <circle cx="12" cy="7" r="4" />
-        </svg>
-        <span className="hidden md:inline">Entrar</span>
+        {iconPerson}
+        {!minimal && <span className="hidden md:inline">Entrar</span>}
       </Link>
     );
   }
@@ -47,18 +75,37 @@ export function UserMenu() {
       <button
         type="button"
         onClick={() => setOpen((v) => !v)}
-        className="flex items-center gap-1.5 rounded-xl border border-[#e0d5cd] bg-white px-1.5 py-1.5 text-sm font-medium text-[#5c4a42] transition hover:border-[#c4a69a] sm:gap-2 sm:px-2.5"
+        className={
+          minimal
+            ? "flex shrink-0 items-center justify-center rounded-full p-1.5 text-[#5c4a42] transition hover:bg-[#f0e8e2]"
+            : "flex items-center gap-1.5 rounded-xl border border-[#e0d5cd] bg-white px-1.5 py-1.5 text-sm font-medium text-[#5c4a42] transition hover:border-[#c4a69a] sm:gap-2 sm:px-2.5"
+        }
         aria-haspopup="menu"
         aria-expanded={open}
         aria-label="Menu da conta"
       >
-        <span className="flex h-7 w-7 items-center justify-center rounded-full bg-gradient-to-br from-[#c4a69a] to-[#8b7355] text-xs font-semibold text-white">
+        <span className="flex h-8 w-8 items-center justify-center rounded-full bg-gradient-to-br from-[#c4a69a] to-[#8b7355] text-xs font-semibold text-white">
           {initial || "?"}
         </span>
-        <span className="hidden max-w-[6rem] truncate md:inline lg:max-w-[8rem]">{firstName}</span>
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={`hidden transition-transform md:block ${open ? "rotate-180" : ""}`}>
-          <path d="m6 9 6 6 6-6" />
-        </svg>
+        {!minimal && (
+          <>
+            <span className="hidden max-w-[6rem] truncate md:inline lg:max-w-[8rem]">{firstName}</span>
+            <svg
+              width="14"
+              height="14"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              className={`hidden transition-transform md:block ${open ? "rotate-180" : ""}`}
+              aria-hidden
+            >
+              <path d="m6 9 6 6 6-6" />
+            </svg>
+          </>
+        )}
       </button>
 
       {open && (

@@ -80,3 +80,20 @@ export async function getFeaturedProducts(limit: number): Promise<Product[]> {
   );
   return (rows as ProductRow[]).map(mapProduct);
 }
+
+/** Busca simples por nome, benefício ou descrição (LIKE). */
+export async function searchProducts(rawQuery: string): Promise<Product[]> {
+  const clean = rawQuery.trim().replace(/[%_\\]/g, "").slice(0, 80);
+  if (!clean) return [];
+  const pool = getPool();
+  const pattern = `%${clean}%`;
+  const [rows] = await pool.query(
+    `SELECT id, category_slug, name, benefit, description, price, accent, image_url
+     FROM products
+     WHERE name LIKE ? OR benefit LIKE ? OR description LIKE ?
+     ORDER BY name ASC
+     LIMIT 48`,
+    [pattern, pattern, pattern]
+  );
+  return (rows as ProductRow[]).map(mapProduct);
+}
