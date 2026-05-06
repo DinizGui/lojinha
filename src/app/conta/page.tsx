@@ -19,18 +19,18 @@ export default async function ContaPage() {
     <div>
       {/* Header strip */}
       <section className="border-b border-[#e8ddd6] bg-gradient-to-br from-[#f5ebe6] via-[#f5ebe6] to-[#ebdcd1]">
-        <div className="mx-auto max-w-5xl px-4 py-12 sm:py-16">
-          <div className="flex flex-col items-start gap-6 sm:flex-row sm:items-center sm:justify-between">
-            <div className="flex items-center gap-5">
-              <div className="flex h-20 w-20 items-center justify-center rounded-full bg-gradient-to-br from-[#c4a69a] to-[#5c4a42] text-2xl font-semibold text-white shadow-lg ring-4 ring-white/60">
+        <div className="mx-auto max-w-5xl px-4 py-10 sm:px-6 sm:py-16">
+          <div className="flex flex-col items-start gap-5 sm:flex-row sm:items-center sm:justify-between sm:gap-6">
+            <div className="flex w-full items-center gap-4 sm:w-auto sm:gap-5">
+              <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-[#c4a69a] to-[#5c4a42] text-xl font-semibold text-white shadow-lg ring-4 ring-white/60 sm:h-20 sm:w-20 sm:text-2xl">
                 {initial}
               </div>
-              <div>
+              <div className="min-w-0">
                 <span className="ornament text-[#3d2f29]/60">Mon compte</span>
-                <h1 className="mt-2 font-[family-name:var(--font-display)] text-3xl font-semibold text-[#3d2f29] sm:text-4xl">
+                <h1 className="mt-2 truncate font-[family-name:var(--font-display)] text-2xl font-semibold text-[#3d2f29] sm:text-3xl lg:text-4xl">
                   Olá, {firstName}.
                 </h1>
-                <p className="mt-1 text-sm text-[#5c4a42]">
+                <p className="mt-1 text-xs text-[#5c4a42] sm:text-sm">
                   Bem-vinda de volta. Que bom te ver por aqui.
                 </p>
               </div>
@@ -40,10 +40,10 @@ export default async function ContaPage() {
         </div>
       </section>
 
-      <div className="mx-auto max-w-5xl px-4 py-10 sm:py-14">
-        <div className="grid gap-6 lg:grid-cols-3">
+      <div className="mx-auto max-w-5xl px-4 py-8 sm:px-6 sm:py-14">
+        <div className="grid gap-5 sm:gap-6 lg:grid-cols-3">
           {/* Personal data */}
-          <div className="rounded-2xl border border-[#e8ddd6] bg-white p-6 shadow-sm lg:col-span-2">
+          <div className="rounded-2xl border border-[#e8ddd6] bg-white p-5 shadow-sm sm:p-6 lg:col-span-2">
             <div className="flex items-center justify-between">
               <h2 className="text-base font-semibold text-[#3d2f29]">Dados pessoais</h2>
               <span className="rounded-full bg-[#f5ebe6] px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.2em] text-[#8b7355]">
@@ -96,7 +96,7 @@ export default async function ContaPage() {
         </div>
 
         {/* Orders placeholder */}
-        <div className="mt-8 rounded-2xl border border-dashed border-[#e0d5cd] bg-white/60 p-8 text-center">
+        <div className="mt-6 rounded-2xl border border-dashed border-[#e0d5cd] bg-white/60 p-6 text-center sm:mt-8 sm:p-8">
           <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-[#f5ebe6] text-[#8b7355]">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
               <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z" />

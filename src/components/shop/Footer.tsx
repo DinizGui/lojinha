@@ -9,8 +9,8 @@ export function Footer({ categories }: { categories: Category[] }) {
 
   return (
     <footer className="mt-auto border-t border-[#e8ddd6] bg-gradient-to-b from-[#f5ebe6] to-[#ebdcd1]">
-      <div className="mx-auto max-w-7xl px-4 py-14 sm:py-16">
-        <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
+      <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6 sm:py-14 lg:py-16">
+        <div className="grid gap-8 sm:grid-cols-2 sm:gap-10 lg:grid-cols-4">
           {/* Brand */}
           <div className="lg:col-span-1">
             <Link href="/" className="inline-flex items-center gap-3" aria-label={name}>
@@ -149,8 +149,8 @@ export function Footer({ categories }: { categories: Category[] }) {
           </div>
         </div>
 
-        <div className="mt-12 border-t border-[#d4c4bb]/60 pt-6">
-          <div className="flex flex-col items-center justify-between gap-3 text-xs text-[#7a6a62] sm:flex-row">
+        <div className="mt-10 border-t border-[#d4c4bb]/60 pt-6 sm:mt-12">
+          <div className="flex flex-col items-center justify-between gap-3 text-center text-[11px] text-[#7a6a62] sm:flex-row sm:text-left sm:text-xs">
             <p>© {new Date().getFullYear()} {name} · Todos os direitos reservados.</p>
             <p className="text-[#a89890]">
               Feito com cuidado · Curitiba · Brasil

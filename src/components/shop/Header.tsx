@@ -42,12 +42,12 @@ export function Header({
     <header className="sticky top-0 z-40">
       {/* Top announcement bar */}
       <div className="bg-[#3d2f29] text-[#f5ebe6]">
-        <div className="mx-auto flex max-w-7xl items-center justify-center gap-6 px-4 py-2 text-[11px] font-medium uppercase tracking-[0.25em] sm:justify-between">
-          <p className="text-center">
-            ✦ Frete grátis acima de R$ 199 · Parcelamos em até 6×
+        <div className="mx-auto flex max-w-7xl items-center justify-center gap-4 px-3 py-2 text-[10px] font-medium uppercase tracking-[0.18em] sm:gap-6 sm:px-4 sm:text-[11px] sm:tracking-[0.25em] sm:justify-between">
+          <p className="truncate text-center">
+            ✦ Frete grátis acima de R$ 199 · Parcelamos em 6×
           </p>
           <p className="hidden text-[#c4a69a] sm:block">
-            Atendimento exclusivo via WhatsApp
+            Atendimento via WhatsApp
           </p>
         </div>
       </div>
@@ -57,10 +57,10 @@ export function Header({
           scrolled ? "shadow-[0_4px_20px_-12px_rgba(60,40,30,0.18)]" : ""
         }`}
       >
-        <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-4 sm:py-5">
+        <div className="mx-auto flex max-w-7xl items-center justify-between gap-2 px-3 py-3 sm:gap-4 sm:px-4 sm:py-4 lg:py-5">
           <button
             type="button"
-            className="rounded-lg p-2 -ml-2 text-[#5c4a42] transition hover:bg-[#f0e8e2] lg:hidden"
+            className="-ml-1 rounded-lg p-2 text-[#5c4a42] transition hover:bg-[#f0e8e2] lg:hidden"
             onClick={() => setNavOpen((o) => !o)}
             aria-expanded={navOpen}
             aria-label="Abrir menu de categorias"
@@ -76,24 +76,24 @@ export function Header({
 
           <Link
             href="/"
-            className="group flex items-center gap-3 text-[#5c4a42] transition-opacity hover:opacity-90 lg:gap-3.5"
+            className="group flex min-w-0 items-center gap-2.5 text-[#5c4a42] transition-opacity hover:opacity-90 sm:gap-3 lg:gap-3.5"
             aria-label={`Início — ${storeName}`}
           >
-            <span className="relative inline-block h-12 w-12 overflow-hidden rounded-full ring-1 ring-[#e0d5cd] transition-transform duration-300 group-hover:scale-105 sm:h-14 sm:w-14">
+            <span className="relative inline-block h-10 w-10 shrink-0 overflow-hidden rounded-full ring-1 ring-[#e0d5cd] transition-transform duration-300 group-hover:scale-105 sm:h-12 sm:w-12 lg:h-14 lg:w-14">
               <Image
                 src="/logo.png"
                 alt=""
                 fill
                 priority
-                sizes="56px"
+                sizes="(max-width: 640px) 40px, 56px"
                 className="object-cover"
               />
             </span>
-            <span className="flex flex-col leading-none">
-              <span className="font-[family-name:var(--font-display)] text-xl font-semibold tracking-[0.22em] text-[#3d2f29] sm:text-2xl">
+            <span className="flex min-w-0 flex-col leading-none">
+              <span className="truncate font-[family-name:var(--font-display)] text-base font-semibold tracking-[0.18em] text-[#3d2f29] sm:text-lg sm:tracking-[0.22em] lg:text-2xl">
                 MA BELLE
               </span>
-              <span className="mt-1 text-[10px] font-medium uppercase tracking-[0.45em] text-[#a89890]">
+              <span className="mt-1 truncate text-[9px] font-medium uppercase tracking-[0.35em] text-[#a89890] sm:text-[10px] sm:tracking-[0.45em]">
                 Paris
               </span>
             </span>
@@ -117,12 +117,12 @@ export function Header({
             ))}
           </nav>
 
-          <div className="flex items-center gap-2">
+          <div className="flex shrink-0 items-center gap-1.5 sm:gap-2">
             <UserMenu />
             <button
               type="button"
               onClick={onOpenCart}
-              className="relative flex items-center gap-2 rounded-xl border border-[#e0d5cd] bg-white px-3 py-2 text-sm font-medium text-[#5c4a42] transition hover:border-[#c4a69a] hover:shadow-sm"
+              className="relative flex items-center gap-2 rounded-xl border border-[#e0d5cd] bg-white px-2.5 py-2 text-sm font-medium text-[#5c4a42] transition hover:border-[#c4a69a] hover:shadow-sm sm:px-3"
               aria-label={`Abrir carrinho${totalQty > 0 ? ` (${totalQty} itens)` : ""}`}
             >
               <svg
@@ -139,7 +139,7 @@ export function Header({
                 <path d="M3 6h18" />
                 <path d="M16 10a4 4 0 0 1-8 0" />
               </svg>
-              <span className="hidden sm:inline">Carrinho</span>
+              <span className="hidden md:inline">Carrinho</span>
               {totalQty > 0 && (
                 <span className="absolute -right-1.5 -top-1.5 flex h-5 min-w-5 items-center justify-center rounded-full bg-[#8b7355] px-1.5 text-[11px] font-semibold text-white shadow-sm">
                   {totalQty > 99 ? "99+" : totalQty}
