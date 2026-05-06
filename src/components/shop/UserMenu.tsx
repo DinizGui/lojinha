@@ -19,20 +19,21 @@ export function UserMenu() {
   }, []);
 
   if (status === "loading") {
-    return <span className="h-9 w-20 animate-pulse rounded-xl bg-[#f0e8e2]" aria-hidden />;
+    return <span className="h-9 w-9 animate-pulse rounded-xl bg-[#f0e8e2] sm:w-20" aria-hidden />;
   }
 
   if (!session?.user) {
     return (
       <Link
         href="/login"
-        className="flex items-center gap-1.5 rounded-xl border border-[#e0d5cd] bg-white px-3 py-2 text-sm font-medium text-[#5c4a42] transition hover:border-[#c4a69a]"
+        className="flex items-center gap-1.5 rounded-xl border border-[#e0d5cd] bg-white px-2.5 py-2 text-sm font-medium text-[#5c4a42] transition hover:border-[#c4a69a] sm:px-3"
+        aria-label="Entrar"
       >
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
           <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
           <circle cx="12" cy="7" r="4" />
         </svg>
-        Entrar
+        <span className="hidden md:inline">Entrar</span>
       </Link>
     );
   }
@@ -46,15 +47,16 @@ export function UserMenu() {
       <button
         type="button"
         onClick={() => setOpen((v) => !v)}
-        className="flex items-center gap-2 rounded-xl border border-[#e0d5cd] bg-white px-2.5 py-1.5 text-sm font-medium text-[#5c4a42] transition hover:border-[#c4a69a]"
+        className="flex items-center gap-1.5 rounded-xl border border-[#e0d5cd] bg-white px-1.5 py-1.5 text-sm font-medium text-[#5c4a42] transition hover:border-[#c4a69a] sm:gap-2 sm:px-2.5"
         aria-haspopup="menu"
         aria-expanded={open}
+        aria-label="Menu da conta"
       >
         <span className="flex h-7 w-7 items-center justify-center rounded-full bg-gradient-to-br from-[#c4a69a] to-[#8b7355] text-xs font-semibold text-white">
           {initial || "?"}
         </span>
-        <span className="hidden max-w-[8rem] truncate sm:inline">{firstName}</span>
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={`transition-transform ${open ? "rotate-180" : ""}`}>
+        <span className="hidden max-w-[6rem] truncate md:inline lg:max-w-[8rem]">{firstName}</span>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={`hidden transition-transform md:block ${open ? "rotate-180" : ""}`}>
           <path d="m6 9 6 6 6-6" />
         </svg>
       </button>

@@ -80,22 +80,22 @@ export default async function HomePage() {
         <div className="pointer-events-none absolute -left-24 -top-24 h-72 w-72 rounded-full bg-[#dab39e]/30 blur-3xl" aria-hidden />
         <div className="pointer-events-none absolute -right-32 top-20 h-96 w-96 rounded-full bg-[#e8c8b8]/40 blur-3xl" aria-hidden />
 
-        <div className="relative mx-auto grid max-w-7xl gap-10 px-4 py-16 sm:py-20 lg:grid-cols-[1.1fr_1fr] lg:gap-16 lg:py-28">
+        <div className="relative mx-auto grid max-w-7xl gap-10 px-4 py-12 sm:px-6 sm:py-20 lg:grid-cols-[1.1fr_1fr] lg:gap-16 lg:py-28">
           <div className="fade-up flex flex-col justify-center">
             <span className="ornament">Nouvelle collection</span>
-            <h1 className="mt-5 font-[family-name:var(--font-display)] text-4xl font-semibold leading-[1.05] text-[#3d2f29] sm:text-5xl lg:text-6xl">
+            <h1 className="mt-4 font-[family-name:var(--font-display)] text-[clamp(2rem,8vw,3.75rem)] font-semibold leading-[1.05] text-[#3d2f29] sm:mt-5 lg:text-6xl">
               Beleza com <em className="not-italic text-[#8b7355]">charme</em>
               <br />
               de Paris.
             </h1>
-            <p className="mt-5 max-w-xl text-lg leading-relaxed text-[#5c4a42]">
+            <p className="mt-4 max-w-xl text-base leading-relaxed text-[#5c4a42] sm:mt-5 sm:text-lg">
               Cabelos, skin care, perfumaria, maquiagem, higiene e linha natural —
               uma curadoria delicada para cuidar de você por inteiro.
             </p>
-            <div className="mt-8 flex flex-wrap gap-3">
+            <div className="mt-7 flex flex-col gap-3 sm:mt-8 sm:flex-row sm:flex-wrap">
               <Link
                 href="/categoria/skin-care"
-                className="group inline-flex items-center gap-2 rounded-full bg-[#3d2f29] px-7 py-3.5 text-sm font-medium tracking-wide text-white transition hover:bg-[#5c4a42] hover:shadow-lg"
+                className="group inline-flex items-center justify-center gap-2 rounded-full bg-[#3d2f29] px-6 py-3.5 text-sm font-medium tracking-wide text-white transition hover:bg-[#5c4a42] hover:shadow-lg sm:px-7"
               >
                 Explorar coleção
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="transition group-hover:translate-x-0.5">
@@ -104,13 +104,13 @@ export default async function HomePage() {
               </Link>
               <Link
                 href="/categoria/perfumaria"
-                className="inline-flex items-center gap-2 rounded-full border border-[#c4a69a] bg-white/60 px-7 py-3.5 text-sm font-medium text-[#3d2f29] backdrop-blur-sm transition hover:bg-white"
+                className="inline-flex items-center justify-center gap-2 rounded-full border border-[#c4a69a] bg-white/60 px-6 py-3.5 text-sm font-medium text-[#3d2f29] backdrop-blur-sm transition hover:bg-white sm:px-7"
               >
                 Perfumaria
               </Link>
             </div>
 
-            <div className="mt-10 flex items-center gap-6 text-sm text-[#7a6a62]">
+            <div className="mt-8 flex flex-wrap items-center gap-x-5 gap-y-2 text-sm text-[#7a6a62] sm:mt-10 sm:gap-6">
               <div className="flex items-center gap-2">
                 <span className="text-[#8b7355]">★★★★★</span>
                 <span>4.9 · +1.200 clientes</span>
@@ -121,26 +121,26 @@ export default async function HomePage() {
           </div>
 
           {/* Hero visual */}
-          <div className="fade-up-delay-1 relative">
-            <div className="relative mx-auto aspect-[4/5] w-full max-w-md overflow-hidden rounded-[2rem] bg-gradient-to-br from-[#dab39e] via-[#c4a08a] to-[#8b7355] shadow-2xl shadow-[#3d2f29]/20">
+          <div className="fade-up-delay-1 relative mt-2 lg:mt-0">
+            <div className="relative mx-auto aspect-[4/5] w-full max-w-sm overflow-hidden rounded-[1.5rem] bg-gradient-to-br from-[#dab39e] via-[#c4a08a] to-[#8b7355] shadow-2xl shadow-[#3d2f29]/20 sm:max-w-md sm:rounded-[2rem]">
               <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(255,255,255,0.3),transparent_60%)]" />
-              <div className="absolute bottom-6 left-6 right-6 rounded-2xl bg-white/90 p-5 backdrop-blur-md">
+              <div className="absolute inset-x-4 bottom-4 rounded-2xl bg-white/90 p-4 backdrop-blur-md sm:inset-x-6 sm:bottom-6 sm:p-5">
                 <p className="text-[10px] font-semibold uppercase tracking-[0.3em] text-[#8b7355]">
                   Em destaque
                 </p>
-                <p className="mt-1 font-[family-name:var(--font-display)] text-xl font-semibold text-[#3d2f29]">
+                <p className="mt-1 font-[family-name:var(--font-display)] text-lg font-semibold text-[#3d2f29] sm:text-xl">
                   Ritual de skin care francês
                 </p>
-                <p className="mt-1 text-sm text-[#7a6a62]">
+                <p className="mt-1 text-xs text-[#7a6a62] sm:text-sm">
                   Texturas leves, fórmulas que respeitam a pele.
                 </p>
               </div>
-              <div className="absolute -top-3 -right-3 rounded-full bg-white px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-[#8b7355] shadow-lg">
+              <div className="absolute -top-2 right-2 rounded-full bg-white px-3 py-1.5 text-[10px] font-semibold uppercase tracking-[0.2em] text-[#8b7355] shadow-lg sm:-top-3 sm:right-auto sm:left-auto sm:-right-3 sm:px-4 sm:py-2 sm:text-xs">
                 Novo
               </div>
             </div>
             {/* Floating chip */}
-            <div className="absolute -bottom-4 -left-4 hidden rounded-2xl border border-[#e8ddd6] bg-white p-4 shadow-xl sm:block">
+            <div className="absolute -bottom-4 -left-4 hidden rounded-2xl border border-[#e8ddd6] bg-white p-4 shadow-xl xl:block">
               <div className="flex items-center gap-3">
                 <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#f5ebe6]">
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#8b7355" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
@@ -163,14 +163,14 @@ export default async function HomePage() {
           {benefits.map((b) => (
             <div
               key={b.title}
-              className="flex items-start gap-3 bg-white px-5 py-6 sm:px-6"
+              className="flex items-start gap-3 bg-white px-4 py-5 sm:px-6 sm:py-6"
             >
-              <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-[#f5ebe6] text-[#8b7355]">
+              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[#f5ebe6] text-[#8b7355] sm:h-11 sm:w-11">
                 {b.icon}
               </div>
-              <div>
+              <div className="min-w-0">
                 <p className="text-sm font-semibold text-[#3d2f29]">{b.title}</p>
-                <p className="mt-0.5 text-sm leading-snug text-[#7a6a62]">{b.text}</p>
+                <p className="mt-0.5 text-xs leading-snug text-[#7a6a62] sm:text-sm">{b.text}</p>
               </div>
             </div>
           ))}
@@ -178,13 +178,13 @@ export default async function HomePage() {
       </section>
 
       {/* CATEGORIES */}
-      <section className="mx-auto max-w-7xl px-4 py-16 sm:py-20">
+      <section className="mx-auto max-w-7xl px-4 py-14 sm:px-6 sm:py-20">
         <div className="flex flex-col items-center text-center">
           <span className="ornament">Univers Ma Belle</span>
-          <h2 className="mt-4 font-[family-name:var(--font-display)] text-3xl font-semibold text-[#3d2f29] sm:text-4xl">
+          <h2 className="mt-3 font-[family-name:var(--font-display)] text-2xl font-semibold text-[#3d2f29] sm:mt-4 sm:text-3xl lg:text-4xl">
             Categorias para todo cuidado
           </h2>
-          <p className="mt-3 max-w-xl text-[#7a6a62]">
+          <p className="mt-3 max-w-xl text-sm text-[#7a6a62] sm:text-base">
             Da rotina diária ao ritual especial — encontre o que combina com você.
           </p>
         </div>
@@ -194,12 +194,12 @@ export default async function HomePage() {
             Nenhuma categoria disponível no momento.
           </p>
         ) : (
-          <ul className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          <ul className="mt-8 grid gap-4 sm:mt-10 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3">
             {categories.map((c, i) => (
               <li key={c.slug}>
                 <Link
                   href={`/categoria/${c.slug}`}
-                  className="group relative block h-64 overflow-hidden rounded-3xl border border-[#e8ddd6] bg-white shadow-sm transition hover:-translate-y-0.5 hover:shadow-xl"
+                  className="group relative block h-56 overflow-hidden rounded-3xl border border-[#e8ddd6] bg-white shadow-sm transition hover:-translate-y-0.5 hover:shadow-xl sm:h-64"
                 >
                   <div className={`absolute inset-0 bg-gradient-to-br ${defaultAccent(c.slug)} transition duration-500 group-hover:scale-105`} aria-hidden />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#3d2f29]/65 via-[#3d2f29]/20 to-transparent" aria-hidden />
@@ -228,12 +228,12 @@ export default async function HomePage() {
       </section>
 
       {/* FEATURED */}
-      <section className="border-y border-[#e8ddd6] bg-gradient-to-b from-[#faf6f2] to-[#f5ebe6] py-16 sm:py-20">
-        <div className="mx-auto max-w-7xl px-4">
+      <section className="border-y border-[#e8ddd6] bg-gradient-to-b from-[#faf6f2] to-[#f5ebe6] py-14 sm:py-20">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6">
           <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
             <div>
               <span className="ornament">Coups de cœur</span>
-              <h2 className="mt-3 font-[family-name:var(--font-display)] text-3xl font-semibold text-[#3d2f29] sm:text-4xl">
+              <h2 className="mt-3 font-[family-name:var(--font-display)] text-2xl font-semibold text-[#3d2f29] sm:text-3xl lg:text-4xl">
                 Destaques da casa
               </h2>
             </div>
@@ -251,7 +251,7 @@ export default async function HomePage() {
           {destaques.length === 0 ? (
             <p className="mt-10 text-sm text-[#9a8a82]">Nenhum produto em destaque ainda.</p>
           ) : (
-            <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            <div className="mt-8 grid gap-5 sm:mt-10 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3">
               {destaques.map((p) => (
                 <ProductCard key={p.id} product={p} />
               ))}
@@ -261,54 +261,44 @@ export default async function HomePage() {
       </section>
 
       {/* EDITORIAL / About */}
-      <section className="mx-auto max-w-7xl px-4 py-16 sm:py-24">
-        <div className="grid items-center gap-12 lg:grid-cols-2">
-          <div className="relative aspect-[4/5] overflow-hidden rounded-[2.5rem] bg-gradient-to-br from-[#e8c8b8] via-[#c4a08a] to-[#5c4a42] shadow-xl">
+      <section className="mx-auto max-w-7xl px-4 py-14 sm:px-6 sm:py-20 lg:py-24">
+        <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-12">
+          <div className="relative mx-auto aspect-[4/5] w-full max-w-md overflow-hidden rounded-[2rem] bg-gradient-to-br from-[#e8c8b8] via-[#c4a08a] to-[#5c4a42] shadow-xl sm:rounded-[2.5rem] lg:max-w-none">
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_30%,rgba(255,255,255,0.25),transparent_60%)]" />
-            <div className="absolute bottom-6 right-6 rounded-2xl bg-white/90 px-5 py-3 backdrop-blur">
-              <p className="font-[family-name:var(--font-display)] text-lg italic text-[#3d2f29]">
+            <div className="absolute inset-x-4 bottom-4 rounded-2xl bg-white/90 px-4 py-3 backdrop-blur sm:inset-x-auto sm:bottom-6 sm:right-6 sm:px-5">
+              <p className="font-[family-name:var(--font-display)] text-base italic text-[#3d2f29] sm:text-lg">
                 « Élégance et soin »
               </p>
             </div>
           </div>
           <div>
             <span className="ornament">Notre histoire</span>
-            <h2 className="mt-4 font-[family-name:var(--font-display)] text-3xl font-semibold text-[#3d2f29] sm:text-4xl">
+            <h2 className="mt-3 font-[family-name:var(--font-display)] text-2xl font-semibold text-[#3d2f29] sm:mt-4 sm:text-3xl lg:text-4xl">
               Beleza francesa, cuidado brasileiro.
             </h2>
-            <p className="mt-5 text-lg leading-relaxed text-[#5c4a42]">
+            <p className="mt-4 text-base leading-relaxed text-[#5c4a42] sm:mt-5 sm:text-lg">
               Inspirados pelo savoir-faire parisiense, escolhemos cada produto
               pensando em texturas leves, fórmulas honestas e resultados que
               valem a rotina.
             </p>
-            <p className="mt-4 text-[#7a6a62]">
+            <p className="mt-3 text-sm text-[#7a6a62] sm:text-base">
               Mais que uma loja — um pequeno ritual de bem-estar pra cada dia.
             </p>
-            <div className="mt-8 grid grid-cols-3 gap-4 max-w-md">
-              <div>
-                <p className="font-[family-name:var(--font-display)] text-3xl font-semibold text-[#8b7355]">
-                  +1k
-                </p>
-                <p className="text-xs uppercase tracking-wider text-[#a89890]">
-                  Clientes
-                </p>
-              </div>
-              <div>
-                <p className="font-[family-name:var(--font-display)] text-3xl font-semibold text-[#8b7355]">
-                  6
-                </p>
-                <p className="text-xs uppercase tracking-wider text-[#a89890]">
-                  Categorias
-                </p>
-              </div>
-              <div>
-                <p className="font-[family-name:var(--font-display)] text-3xl font-semibold text-[#8b7355]">
-                  4.9★
-                </p>
-                <p className="text-xs uppercase tracking-wider text-[#a89890]">
-                  Avaliação
-                </p>
-              </div>
+            <div className="mt-7 grid max-w-md grid-cols-3 gap-3 sm:mt-8 sm:gap-4">
+              {[
+                { v: "+1k", l: "Clientes" },
+                { v: "6", l: "Categorias" },
+                { v: "4.9★", l: "Avaliação" },
+              ].map((s) => (
+                <div key={s.l}>
+                  <p className="font-[family-name:var(--font-display)] text-2xl font-semibold text-[#8b7355] sm:text-3xl">
+                    {s.v}
+                  </p>
+                  <p className="text-[10px] uppercase tracking-wider text-[#a89890] sm:text-xs">
+                    {s.l}
+                  </p>
+                </div>
+              ))}
             </div>
           </div>
         </div>
@@ -316,23 +306,23 @@ export default async function HomePage() {
 
       {/* CTA strip */}
       <section className="bg-[#3d2f29] text-[#f5ebe6]">
-        <div className="mx-auto flex max-w-7xl flex-col items-center gap-6 px-4 py-12 text-center sm:flex-row sm:justify-between sm:text-left">
+        <div className="mx-auto flex max-w-7xl flex-col items-center gap-5 px-4 py-10 text-center sm:flex-row sm:gap-6 sm:px-6 sm:py-12 sm:text-left lg:justify-between">
           <div className="flex items-center gap-4">
-            <div className="relative h-14 w-14 shrink-0 overflow-hidden rounded-full ring-1 ring-[#8b7355]">
+            <div className="relative h-12 w-12 shrink-0 overflow-hidden rounded-full ring-1 ring-[#8b7355] sm:h-14 sm:w-14">
               <Image src="/logo.png" alt="" fill sizes="56px" className="object-cover" />
             </div>
-            <div>
-              <p className="font-[family-name:var(--font-display)] text-2xl font-semibold tracking-wide">
+            <div className="min-w-0">
+              <p className="font-[family-name:var(--font-display)] text-xl font-semibold tracking-wide sm:text-2xl">
                 Dúvidas? Fale com a gente.
               </p>
-              <p className="text-sm text-[#c4a69a]">
-                Atendimento humano via WhatsApp, de segunda a sábado.
+              <p className="text-xs text-[#c4a69a] sm:text-sm">
+                Atendimento humano via WhatsApp, de seg a sáb.
               </p>
             </div>
           </div>
           <Link
             href="/categoria/skin-care"
-            className="inline-flex items-center gap-2 rounded-full bg-[#f5ebe6] px-7 py-3.5 text-sm font-semibold text-[#3d2f29] transition hover:bg-white"
+            className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-[#f5ebe6] px-6 py-3.5 text-sm font-semibold text-[#3d2f29] transition hover:bg-white sm:w-auto sm:px-7"
           >
             Começar a comprar
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">

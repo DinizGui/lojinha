@@ -43,31 +43,31 @@ export default async function ProdutoPage({
     <div>
       {/* Top breadcrumb strip */}
       <div className="border-b border-[#e8ddd6] bg-white">
-        <div className="mx-auto max-w-7xl px-4 py-4">
-          <nav className="text-sm text-[#7a6a62]">
+        <div className="mx-auto max-w-7xl px-4 py-3 sm:px-6 sm:py-4">
+          <nav className="flex flex-wrap items-center text-xs text-[#7a6a62] sm:text-sm">
             <Link href="/" className="hover:text-[#3d2f29]">
               Início
             </Link>
             {cat && (
               <>
-                <span className="mx-2 text-[#c4a69a]">/</span>
+                <span className="mx-1.5 text-[#c4a69a] sm:mx-2">/</span>
                 <Link href={`/categoria/${cat.slug}`} className="hover:text-[#3d2f29]">
                   {cat.name}
                 </Link>
               </>
             )}
-            <span className="mx-2 text-[#c4a69a]">/</span>
-            <span className="font-medium text-[#3d2f29]">{product.name}</span>
+            <span className="mx-1.5 text-[#c4a69a] sm:mx-2">/</span>
+            <span className="line-clamp-1 font-medium text-[#3d2f29]">{product.name}</span>
           </nav>
         </div>
       </div>
 
       {/* Product detail */}
-      <section className="mx-auto max-w-7xl px-4 py-10 sm:py-14">
-        <div className="grid gap-10 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,1fr)] lg:gap-16">
+      <section className="mx-auto max-w-7xl px-4 py-8 sm:px-6 sm:py-14">
+        <div className="grid gap-8 sm:gap-10 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,1fr)] lg:gap-16">
           {/* Image */}
           <div className="lg:sticky lg:top-32 lg:self-start">
-            <div className="relative aspect-square overflow-hidden rounded-[2rem] bg-[#f5ebe6] shadow-lg shadow-[#3d2f29]/5">
+            <div className="relative aspect-square overflow-hidden rounded-2xl bg-[#f5ebe6] shadow-lg shadow-[#3d2f29]/5 sm:rounded-[2rem]">
               {product.imageUrl ? (
                 <Image
                   src={product.imageUrl}
@@ -88,7 +88,7 @@ export default async function ProdutoPage({
                   </div>
                 </>
               )}
-              <div className="absolute left-4 top-4 inline-flex items-center gap-1.5 rounded-full bg-white/90 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.25em] text-[#8b7355] backdrop-blur">
+              <div className="absolute left-3 top-3 inline-flex items-center gap-1.5 rounded-full bg-white/90 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.25em] text-[#8b7355] backdrop-blur sm:left-4 sm:top-4 sm:px-3">
                 ✦ Curadoria
               </div>
             </div>
@@ -99,22 +99,22 @@ export default async function ProdutoPage({
             {cat && (
               <Link
                 href={`/categoria/${cat.slug}`}
-                className="inline-flex w-fit items-center gap-2 rounded-full bg-[#f5ebe6] px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-[#8b7355] hover:bg-[#ebdcd1]"
+                className="inline-flex w-fit items-center gap-2 rounded-full bg-[#f5ebe6] px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.2em] text-[#8b7355] hover:bg-[#ebdcd1] sm:text-xs"
               >
                 {cat.name}
               </Link>
             )}
-            <h1 className="mt-4 font-[family-name:var(--font-display)] text-4xl font-semibold leading-tight text-[#2c2420] sm:text-5xl">
+            <h1 className="mt-3 font-[family-name:var(--font-display)] text-[clamp(1.875rem,7vw,3rem)] font-semibold leading-tight text-[#2c2420] sm:mt-4">
               {product.name}
             </h1>
-            <p className="mt-3 text-lg text-[#5c4a42]">{product.benefit}</p>
+            <p className="mt-2 text-base text-[#5c4a42] sm:mt-3 sm:text-lg">{product.benefit}</p>
 
             <div className="mt-2 flex items-center gap-2 text-sm text-[#7a6a62]">
               <span className="text-[#8b7355]">★★★★★</span>
               <span>4.9 · 87 avaliações</span>
             </div>
 
-            <div className="mt-7 rounded-2xl border border-[#e8ddd6] bg-white p-6 shadow-sm">
+            <div className="mt-6 rounded-2xl border border-[#e8ddd6] bg-white p-5 shadow-sm sm:mt-7 sm:p-6">
               <p className="text-3xl font-semibold tabular-nums text-[#3d2f29] sm:text-4xl">
                 {formatBrl(product.price)}
               </p>
@@ -125,11 +125,15 @@ export default async function ProdutoPage({
                 ✓ Frete grátis acima de R$ 199
               </p>
 
-              <div className="mt-5 flex flex-wrap gap-3">
-                <AddToCartButton product={product} label="Adicionar ao carrinho" />
+              <div className="mt-5 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+                <AddToCartButton
+                  product={product}
+                  label="Adicionar ao carrinho"
+                  className="w-full sm:w-auto"
+                />
                 <Link
                   href="#descricao"
-                  className="inline-flex items-center gap-2 rounded-xl border border-[#e0d5cd] px-5 py-3 text-sm font-medium text-[#5c4a42] hover:bg-[#faf6f2]"
+                  className="inline-flex w-full items-center justify-center gap-2 rounded-xl border border-[#e0d5cd] px-5 py-3 text-sm font-medium text-[#5c4a42] hover:bg-[#faf6f2] sm:w-auto"
                 >
                   Mais detalhes
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -140,7 +144,7 @@ export default async function ProdutoPage({
             </div>
 
             {/* Trust badges */}
-            <ul className="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-3">
+            <ul className="mt-5 grid grid-cols-1 gap-2.5 sm:mt-6 sm:grid-cols-3 sm:gap-3">
               {[
                 { t: "Envio rápido", s: "Postagem em 1 dia útil" },
                 { t: "Pagamento seguro", s: "Cartão, Pix ou boleto" },
@@ -156,11 +160,11 @@ export default async function ProdutoPage({
               ))}
             </ul>
 
-            <div id="descricao" className="mt-10 border-t border-[#e8ddd6] pt-8">
-              <h2 className="text-[11px] font-semibold uppercase tracking-[0.3em] text-[#a89890]">
+            <div id="descricao" className="mt-8 border-t border-[#e8ddd6] pt-6 sm:mt-10 sm:pt-8">
+              <h2 className="text-[10px] font-semibold uppercase tracking-[0.3em] text-[#a89890] sm:text-[11px]">
                 Sobre o produto
               </h2>
-              <p className="mt-4 text-base leading-relaxed text-[#3d3530]">
+              <p className="mt-3 text-sm leading-relaxed text-[#3d3530] sm:mt-4 sm:text-base">
                 {product.description}
               </p>
             </div>
@@ -170,12 +174,12 @@ export default async function ProdutoPage({
 
       {/* Related */}
       {related.length > 0 && (
-        <section className="border-t border-[#e8ddd6] bg-gradient-to-b from-[#faf6f2] to-[#f5ebe6] py-14 sm:py-16">
-          <div className="mx-auto max-w-7xl px-4">
+        <section className="border-t border-[#e8ddd6] bg-gradient-to-b from-[#faf6f2] to-[#f5ebe6] py-12 sm:py-16">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6">
             <div className="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
               <div>
                 <span className="ornament">Vous aimerez aussi</span>
-                <h2 className="mt-3 font-[family-name:var(--font-display)] text-3xl font-semibold text-[#3d2f29]">
+                <h2 className="mt-3 font-[family-name:var(--font-display)] text-2xl font-semibold text-[#3d2f29] sm:text-3xl">
                   Você também vai gostar
                 </h2>
               </div>
@@ -191,7 +195,7 @@ export default async function ProdutoPage({
                 </Link>
               )}
             </div>
-            <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            <div className="mt-7 grid gap-5 sm:mt-8 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3">
               {related.map((p) => (
                 <ProductCard key={p.id} product={p} />
               ))}

@@ -38,26 +38,26 @@ export function ProductCard({ product }: { product: Product }) {
         </span>
       </Link>
 
-      <div className="flex flex-1 flex-col gap-3 p-5">
+      <div className="flex flex-1 flex-col gap-2.5 p-4 sm:gap-3 sm:p-5">
         <Link href={`/produto/${product.id}`} className="block hover:underline">
-          <h3 className="text-base font-medium leading-snug text-[#2c2420]">
+          <h3 className="text-sm font-medium leading-snug text-[#2c2420] sm:text-base">
             {product.name}
           </h3>
         </Link>
-        <p className="text-sm leading-relaxed text-[#7a6a62] line-clamp-2">
+        <p className="text-xs leading-relaxed text-[#7a6a62] line-clamp-2 sm:text-sm">
           {product.benefit}
         </p>
 
-        <div className="mt-auto flex items-end justify-between gap-3 pt-2">
+        <div className="mt-auto flex flex-wrap items-end justify-between gap-3 pt-2">
           <div>
-            <p className="text-[10px] font-medium uppercase tracking-[0.2em] text-[#a89890]">
+            <p className="text-[9px] font-medium uppercase tracking-[0.2em] text-[#a89890] sm:text-[10px]">
               A partir de
             </p>
-            <p className="text-lg font-semibold tabular-nums text-[#3d2f29]">
+            <p className="text-base font-semibold tabular-nums text-[#3d2f29] sm:text-lg">
               {formatBrl(product.price)}
             </p>
           </div>
-          <AddToCartButton product={product} label="Carrinho" className="px-4 py-2.5" />
+          <AddToCartButton product={product} label="Carrinho" className="px-3 py-2 text-xs sm:px-4 sm:py-2.5 sm:text-sm" />
         </div>
       </div>
     </article>

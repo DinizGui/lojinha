@@ -44,7 +44,7 @@ export default async function RootLayout({
       lang="pt-BR"
       className={`${dmSans.variable} ${display.variable} h-full antialiased`}
     >
-      <body className="flex min-h-full flex-col bg-[#faf7f5] font-sans text-[#2c2420]">
+      <body className="flex min-h-full flex-col overflow-x-hidden bg-[#faf6f2] font-sans text-[#2c2420]">
         <AuthProvider>
           <CartProvider>
             <ShopShell categories={categoryNav}>{children}</ShopShell>

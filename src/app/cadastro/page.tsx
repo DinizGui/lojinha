@@ -8,7 +8,7 @@ export default function CadastroPage() {
   return (
     <div className="grid min-h-[calc(100vh-9rem)] lg:grid-cols-2">
       {/* Form first on mobile, left on desktop */}
-      <div className="order-2 flex items-center justify-center px-4 py-12 sm:py-16 lg:order-1">
+      <div className="order-2 flex items-center justify-center px-4 py-10 sm:px-6 sm:py-16 lg:order-1">
         <div className="w-full max-w-md">
           <Link
             href="/"
@@ -21,7 +21,7 @@ export default function CadastroPage() {
           </Link>
 
           <span className="ornament">Rejoignez-nous</span>
-          <h1 className="mt-3 font-[family-name:var(--font-display)] text-3xl font-semibold text-[#3d2f29] sm:text-4xl">
+          <h1 className="mt-3 font-[family-name:var(--font-display)] text-2xl font-semibold text-[#3d2f29] sm:text-3xl lg:text-4xl">
             Crie sua conta
           </h1>
           <p className="mt-2 text-sm text-[#7a6a62]">

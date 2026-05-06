@@ -45,23 +45,23 @@ export default async function CategoriaPage({
       <section className={`relative overflow-hidden border-b border-[#e8ddd6] bg-gradient-to-br ${accent(cat.slug)}`}>
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(255,255,255,0.35),transparent_60%)]" aria-hidden />
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#3d2f29]/10" aria-hidden />
-        <div className="relative mx-auto max-w-7xl px-4 py-16 sm:py-20">
-          <nav className="text-sm text-[#3d2f29]/70">
+        <div className="relative mx-auto max-w-7xl px-4 py-12 sm:px-6 sm:py-20">
+          <nav className="flex flex-wrap items-center text-xs text-[#3d2f29]/70 sm:text-sm">
             <Link href="/" className="hover:text-[#3d2f29]">
               Início
             </Link>
             <span className="mx-2">/</span>
-            <span className="font-medium text-[#3d2f29]">{cat.name}</span>
+            <span className="font-medium text-[#3d2f29] truncate">{cat.name}</span>
           </nav>
-          <div className="mt-6 max-w-2xl">
+          <div className="mt-5 max-w-2xl sm:mt-6">
             <span className="ornament text-[#3d2f29]/70">Catégorie</span>
-            <h1 className="mt-3 font-[family-name:var(--font-display)] text-4xl font-semibold leading-tight text-[#3d2f29] sm:text-5xl">
+            <h1 className="mt-3 font-[family-name:var(--font-display)] text-[clamp(1.875rem,7vw,3rem)] font-semibold leading-tight text-[#3d2f29]">
               {cat.name}
             </h1>
-            <p className="mt-4 text-lg leading-relaxed text-[#3d2f29]/85">
+            <p className="mt-3 text-base leading-relaxed text-[#3d2f29]/85 sm:mt-4 sm:text-lg">
               {cat.blurb}
             </p>
-            <p className="mt-6 inline-flex items-center gap-2 rounded-full bg-white/70 px-4 py-1.5 text-xs font-medium uppercase tracking-[0.25em] text-[#3d2f29] backdrop-blur-sm">
+            <p className="mt-5 inline-flex items-center gap-2 rounded-full bg-white/70 px-3 py-1.5 text-[10px] font-medium uppercase tracking-[0.2em] text-[#3d2f29] backdrop-blur-sm sm:mt-6 sm:px-4 sm:text-xs sm:tracking-[0.25em]">
               <span className="h-1.5 w-1.5 rounded-full bg-[#8b7355]" />
               {list.length} {list.length === 1 ? "produto" : "produtos"}
             </p>
@@ -70,9 +70,9 @@ export default async function CategoriaPage({
       </section>
 
       {/* Products */}
-      <section className="mx-auto max-w-7xl px-4 py-12 sm:py-16">
+      <section className="mx-auto max-w-7xl px-4 py-10 sm:px-6 sm:py-16">
         {list.length === 0 ? (
-          <div className="rounded-3xl border border-dashed border-[#e8ddd6] bg-white/60 px-6 py-16 text-center">
+          <div className="rounded-3xl border border-dashed border-[#e8ddd6] bg-white/60 px-6 py-12 text-center sm:py-16">
             <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-[#f5ebe6] text-[#8b7355]">
               <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
                 <circle cx="12" cy="12" r="10" />
@@ -93,7 +93,7 @@ export default async function CategoriaPage({
             </Link>
           </div>
         ) : (
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="grid gap-5 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3">
             {list.map((p) => (
               <ProductCard key={p.id} product={p} />
             ))}
@@ -103,15 +103,15 @@ export default async function CategoriaPage({
 
       {/* Other categories */}
       {others.length > 0 && (
-        <section className="border-t border-[#e8ddd6] bg-white py-14">
-          <div className="mx-auto max-w-7xl px-4">
-            <p className="text-[11px] font-semibold uppercase tracking-[0.3em] text-[#a89890]">
+        <section className="border-t border-[#e8ddd6] bg-white py-10 sm:py-14">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6">
+            <p className="text-[10px] font-semibold uppercase tracking-[0.3em] text-[#a89890] sm:text-[11px]">
               Continue explorando
             </p>
-            <h2 className="mt-2 font-[family-name:var(--font-display)] text-2xl font-semibold text-[#3d2f29]">
+            <h2 className="mt-2 font-[family-name:var(--font-display)] text-xl font-semibold text-[#3d2f29] sm:text-2xl">
               Outras categorias
             </h2>
-            <ul className="mt-6 flex flex-wrap gap-3">
+            <ul className="mt-5 flex flex-wrap gap-2 sm:mt-6 sm:gap-3">
               {others.map((c) => (
                 <li key={c.slug}>
                   <Link

@@ -50,7 +50,7 @@ export default function LoginPage() {
       </aside>
 
       {/* Form */}
-      <div className="flex items-center justify-center px-4 py-12 sm:py-16">
+      <div className="flex items-center justify-center px-4 py-10 sm:px-6 sm:py-16">
         <div className="w-full max-w-md">
           <Link
             href="/"
@@ -63,7 +63,7 @@ export default function LoginPage() {
           </Link>
 
           <span className="ornament">Bienvenue</span>
-          <h1 className="mt-3 font-[family-name:var(--font-display)] text-3xl font-semibold text-[#3d2f29] sm:text-4xl">
+          <h1 className="mt-3 font-[family-name:var(--font-display)] text-2xl font-semibold text-[#3d2f29] sm:text-3xl lg:text-4xl">
             Entrar na sua conta
           </h1>
           <p className="mt-2 text-sm text-[#7a6a62]">
