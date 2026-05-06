@@ -19,7 +19,7 @@ export function ShopShell({
     <>
       <Header categories={categories} onOpenCart={() => setCartOpen(true)} />
       <main className="flex-1">{children}</main>
-      <Footer />
+      <Footer categories={categories} />
       <CartDrawer open={cartOpen} onClose={() => setCartOpen(false)} />
     </>
   );
