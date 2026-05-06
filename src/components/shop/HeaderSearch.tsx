@@ -8,7 +8,7 @@ export function HeaderSearch({ className }: { className?: string }) {
 
   return (
     <form action="/busca" method="get" role="search" className={className}>
-      <label htmlFor="header-search" className="sr-only">
+      <label htmlFor="header-search" className="sr-only focus:outline-none">
         Buscar produtos
       </label>
       <div className="flex min-h-[2.75rem] items-stretch overflow-hidden rounded-full border border-[#e3d8cf] bg-white/95 pl-4 shadow-[0_1px_0_rgba(61,47,41,0.04)] transition-[border-color,box-shadow] focus-within:border-[#c4a69a]/90 focus-within:shadow-[0_0_0_3px_rgba(196,166,154,0.18)]">
@@ -20,11 +20,11 @@ export function HeaderSearch({ className }: { className?: string }) {
           placeholder="Buscar"
           autoComplete="off"
           enterKeyHint="search"
-          className="min-w-0 flex-1 border-0 bg-transparent py-2 text-sm text-[#3d2f29] placeholder:text-[#a89890]/90 focus:outline-none focus:ring-0"
+          className="header-search-input min-w-0 flex-1 appearance-none border-0 bg-transparent py-2 text-sm text-[#3d2f29] placeholder:text-[#a89890]/90 focus:outline-none focus:ring-0 focus-visible:outline-none focus-visible:ring-0"
         />
         <button
           type="submit"
-          className="my-1 mr-1 flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[#c4a69a] text-white transition hover:bg-[#b8988c] active:scale-[0.98]"
+          className="my-1 mr-1 flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[#c4a69a] text-white transition hover:bg-[#b8988c] active:scale-[0.98] focus:outline-none focus-visible:outline-none"
           aria-label="Buscar"
         >
           <svg

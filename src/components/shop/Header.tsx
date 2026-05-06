@@ -76,7 +76,7 @@ export function Header({
           scrolled ? "shadow-[0_4px_20px_-12px_rgba(60,40,30,0.12)]" : ""
         }`}
       >
-        <div className="mx-auto max-w-7xl px-3 pt-3 sm:px-4 sm:pt-4 lg:px-5 lg:pt-5">
+        <div className="mx-auto max-w-7xl px-3 pt-3 sm:px-4 sm:pt-4 lg:px-5 lg:pt-5 focus:outline-none">
           {/* Linha 1: logo + utilitários (mobile); desktop inclui busca no grid implícito via segunda linha full-width não — faremos logo | search row */}
           <div className="flex items-center justify-between gap-3">
             <div className="flex min-w-0 flex-1 items-center gap-2 sm:gap-3 lg:flex-none lg:gap-4">
@@ -133,7 +133,7 @@ export function Header({
               <button
                 type="button"
                 onClick={onOpenCart}
-                className="relative flex shrink-0 items-center justify-center rounded-full p-2 text-[#5c4a42] transition hover:bg-[#f0e8e2]"
+                className="relative flex shrink-0 items-center justify-center rounded-full p-2 text-[#5c4a42] transition hover:bg-[#f0e8e2] cursor-pointer"
                 aria-label={`Abrir carrinho${totalQty > 0 ? ` (${totalQty} itens)` : ""}`}
               >
                 <svg
