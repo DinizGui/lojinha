@@ -41,7 +41,7 @@ export function UserMenu({ variant = "default" }: { variant?: "default" | "minim
       <span
         className={
           minimal
-            ? "h-9 w-9 shrink-0 animate-pulse rounded-full bg-[#ede4dc]"
+            ? "h-11 w-11 shrink-0 animate-pulse rounded-full bg-[#ede4dc]"
             : "h-9 w-9 animate-pulse rounded-xl bg-[#f0e8e2] sm:w-20"
         }
         aria-hidden
@@ -55,7 +55,7 @@ export function UserMenu({ variant = "default" }: { variant?: "default" | "minim
         href="/login"
         className={
           minimal
-            ? "flex shrink-0 items-center justify-center rounded-full p-2 text-[#5c4a42] transition hover:bg-[#f0e8e2]"
+            ? "flex h-11 w-11 shrink-0 items-center justify-center rounded-full text-[#3d2f29] transition-colors hover:bg-[#f0e8e2] active:bg-[#e8ddd6]"
             : "flex items-center gap-1.5 rounded-xl border border-[#e0d5cd] bg-white px-2.5 py-2 text-sm font-medium text-[#5c4a42] transition hover:border-[#c4a69a] sm:px-3"
         }
         aria-label="Entrar"
@@ -77,14 +77,14 @@ export function UserMenu({ variant = "default" }: { variant?: "default" | "minim
         onClick={() => setOpen((v) => !v)}
         className={
           minimal
-            ? "flex shrink-0 items-center justify-center rounded-full p-1.5 text-[#5c4a42] transition hover:bg-[#f0e8e2]"
+            ? "flex h-11 w-11 shrink-0 items-center justify-center rounded-full text-[#3d2f29] transition-colors hover:bg-[#f0e8e2] active:bg-[#e8ddd6]"
             : "flex items-center gap-1.5 rounded-xl border border-[#e0d5cd] bg-white px-1.5 py-1.5 text-sm font-medium text-[#5c4a42] transition hover:border-[#c4a69a] sm:gap-2 sm:px-2.5"
         }
         aria-haspopup="menu"
         aria-expanded={open}
         aria-label="Menu da conta"
       >
-        <span className="flex h-8 w-8 items-center justify-center rounded-full bg-gradient-to-br from-[#c4a69a] to-[#8b7355] text-xs font-semibold text-white">
+        <span className="flex h-9 w-9 items-center justify-center rounded-full bg-gradient-to-br from-[#c4a69a] to-[#8b7355] text-xs font-semibold text-white">
           {initial || "?"}
         </span>
         {!minimal && (

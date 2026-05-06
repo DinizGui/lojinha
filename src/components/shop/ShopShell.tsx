@@ -18,7 +18,12 @@ export function ShopShell({
   return (
     <>
       <Header categories={categories} onOpenCart={() => setCartOpen(true)} />
-      <main className="flex-1">{children}</main>
+      <main
+        className="flex-1 transition-[padding-top] duration-200 ease-out"
+        style={{ paddingTop: "var(--shop-header-h, 156px)" }}
+      >
+        {children}
+      </main>
       <Footer categories={categories} />
       <CartDrawer open={cartOpen} onClose={() => setCartOpen(false)} />
     </>

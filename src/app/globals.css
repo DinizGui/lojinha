@@ -147,3 +147,9 @@ input.header-search-input[type="search"]::-webkit-search-results-decoration {
 .header-search-input:focus-visible {
   outline: none;
 }
+
+/* Header mobile drawer: suaviza overscroll no painel */
+.mobile-nav-scroll {
+  -webkit-overflow-scrolling: touch;
+  scrollbar-gutter: stable;
+}
