@@ -1,3 +1,4 @@
+import { HeroProductCards } from "@/components/shop/HeroProductCards";
 import { ProductCard } from "@/components/shop/ProductCard";
 import { getAllCategories, getFeaturedProducts } from "@/lib/data";
 import Image from "next/image";
@@ -75,87 +76,162 @@ export default async function HomePage() {
   return (
     <div>
       {/* HERO */}
-      <section className="relative overflow-hidden border-b border-[#e8ddd6] bg-gradient-to-b from-[#f5ebe6] via-[#f5ebe6] to-[#faf6f2]">
-        {/* Decorative blobs */}
-        <div className="pointer-events-none absolute -left-24 -top-24 h-72 w-72 rounded-full bg-[#dab39e]/30 blur-3xl" aria-hidden />
-        <div className="pointer-events-none absolute -right-32 top-20 h-96 w-96 rounded-full bg-[#e8c8b8]/40 blur-3xl" aria-hidden />
+      <section className="relative isolate overflow-hidden border-b border-[#eadad2] bg-[linear-gradient(180deg,#fcf6f3_0%,#f7ebe5_45%,#fffaf7_100%)]">
+        <div className="pointer-events-none absolute inset-0 opacity-70" aria-hidden>
+          <div className="absolute -left-24 top-0 h-80 w-80 rounded-full bg-[#e9c7bb]/40 blur-3xl" />
+          <div className="absolute right-0 top-24 h-[28rem] w-[28rem] rounded-full bg-[#d9b1a2]/30 blur-3xl" />
+          <div className="absolute bottom-0 left-1/3 h-56 w-56 rounded-full bg-[#f3ddd4]/50 blur-3xl" />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.8),transparent_35%)]" />
+        </div>
 
-        <div className="relative mx-auto grid max-w-7xl gap-10 px-4 py-12 sm:px-6 sm:py-20 lg:grid-cols-[1.1fr_1fr] lg:gap-16 lg:py-28">
+        <div className="pointer-events-none absolute inset-0 opacity-[0.08]" aria-hidden>
+          <div className="h-full w-full bg-[linear-gradient(to_right,#8b7355_1px,transparent_1px),linear-gradient(to_bottom,#8b7355_1px,transparent_1px)] bg-[size:72px_72px]" />
+        </div>
+
+        <div className="relative mx-auto grid max-w-7xl items-center gap-14 px-4 py-14 sm:px-6 sm:py-20 lg:grid-cols-[1.05fr_0.95fr] lg:gap-20 lg:px-8 lg:py-28">
           <div className="fade-up flex flex-col justify-center">
-            <span className="ornament">Nouvelle collection</span>
-            <h1 className="mt-4 font-[family-name:var(--font-display)] text-[clamp(2rem,8vw,3.75rem)] font-semibold leading-[1.05] text-[#3d2f29] sm:mt-5 lg:text-6xl">
-              Beleza com <em className="not-italic text-[#8b7355]">charme</em>
-              <br />
-              de Paris.
+            <div className="flex flex-wrap items-center gap-3">
+              <span className="inline-flex items-center rounded-full border border-[#dbc2b6] bg-white/80 px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.28em] text-[#8b7355] shadow-sm backdrop-blur-sm">
+                Nouvelle collection
+              </span>
+              <span className="inline-flex items-center rounded-full bg-[#f3e1d8] px-3 py-1 text-xs font-medium text-[#7b5f53]">
+                Curadoria premium
+              </span>
+            </div>
+
+            <h1 className="mt-6 max-w-2xl font-[family-name:var(--font-display)] text-[clamp(2.4rem,7vw,5.2rem)] font-semibold leading-[0.96] tracking-[-0.03em] text-[#3b2b27]">
+              Sua rotina de beleza
+              <span className="block text-[#8d6f63]">mais elegante, leve</span>
+              <span className="block">e sensorial.</span>
             </h1>
-            <p className="mt-4 max-w-xl text-base leading-relaxed text-[#5c4a42] sm:mt-5 sm:text-lg">
-              Cabelos, skin care, perfumaria, maquiagem, higiene e linha natural —
-              uma curadoria delicada para cuidar de você por inteiro.
+
+            <p className="mt-6 max-w-xl text-base leading-8 text-[#5f4b45] sm:text-lg">
+              Descubra uma seleção delicada de skin care, perfumaria, maquiagem e cuidados diários
+              pensada para valorizar sua beleza com suavidade, sofisticação e bem-estar.
             </p>
-            <div className="mt-7 flex flex-col gap-3 sm:mt-8 sm:flex-row sm:flex-wrap">
+
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
               <Link
                 href="/categoria/skin-care"
-                className="group inline-flex items-center justify-center gap-2 rounded-full bg-[#3d2f29] px-6 py-3.5 text-sm font-medium tracking-wide text-white transition hover:bg-[#5c4a42] hover:shadow-lg sm:px-7"
+                className="group inline-flex items-center justify-center gap-2 rounded-full bg-[#3b2b27] px-7 py-3.5 text-sm font-medium tracking-wide text-white shadow-lg shadow-[#3b2b27]/15 transition hover:bg-[#59433d] hover:translate-y-[-1px]"
               >
                 Explorar coleção
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="transition group-hover:translate-x-0.5">
                   <path d="M5 12h14M13 5l7 7-7 7" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
               </Link>
+
               <Link
                 href="/categoria/perfumaria"
-                className="inline-flex items-center justify-center gap-2 rounded-full border border-[#c4a69a] bg-white/60 px-6 py-3.5 text-sm font-medium text-[#3d2f29] backdrop-blur-sm transition hover:bg-white sm:px-7"
+                className="inline-flex items-center justify-center rounded-full border border-[#cfb1a4] bg-white/70 px-7 py-3.5 text-sm font-medium text-[#3b2b27] shadow-sm backdrop-blur-sm transition hover:bg-white"
               >
-                Perfumaria
+                Ver perfumaria
               </Link>
             </div>
 
-            <div className="mt-8 flex flex-wrap items-center gap-x-5 gap-y-2 text-sm text-[#7a6a62] sm:mt-10 sm:gap-6">
-              <div className="flex items-center gap-2">
-                <span className="text-[#8b7355]">★★★★★</span>
-                <span>4.9 · +1.200 clientes</span>
+            <div className="mt-10 grid max-w-xl gap-3 sm:grid-cols-3">
+              <div className="rounded-2xl border border-white/70 bg-white/75 p-4 shadow-sm backdrop-blur-sm">
+                <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-[#9a7d6f]">
+                  Fórmulas
+                </p>
+                <p className="mt-2 text-sm leading-6 text-[#5f4b45]">
+                  Texturas leves e ativos que respeitam a pele.
+                </p>
               </div>
-              <div className="hidden h-6 w-px bg-[#d4c4bb] sm:block" />
-              <span className="hidden sm:inline">Curadoria desde 2019</span>
+
+              <div className="rounded-2xl border border-white/70 bg-white/75 p-4 shadow-sm backdrop-blur-sm">
+                <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-[#9a7d6f]">
+                  Bem-estar
+                </p>
+                <p className="mt-2 text-sm leading-6 text-[#5f4b45]">
+                  Rituais de autocuidado para todos os dias.
+                </p>
+              </div>
+
+              <div className="rounded-2xl border border-white/70 bg-white/75 p-4 shadow-sm backdrop-blur-sm">
+                <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-[#9a7d6f]">
+                  Curadoria
+                </p>
+                <p className="mt-2 text-sm leading-6 text-[#5f4b45]">
+                  Marcas escolhidas com olhar sensível e sofisticado.
+                </p>
+              </div>
+            </div>
+
+            <div className="mt-8 flex flex-wrap items-center gap-x-5 gap-y-3 text-sm text-[#77655f]">
+              <div className="flex items-center gap-2">
+                <span className="text-[#b08968]">★★★★★</span>
+                <span>4.9 de satisfação</span>
+              </div>
+              <div className="hidden h-5 w-px bg-[#d9c8bf] sm:block" />
+              <span>+1.200 clientes encantadas</span>
+              <div className="hidden h-5 w-px bg-[#d9c8bf] sm:block" />
+              <span>Curadoria desde 2019</span>
             </div>
           </div>
 
-          {/* Hero visual */}
-          <div className="fade-up-delay-1 relative mt-2 lg:mt-0">
-            <div className="relative mx-auto aspect-[4/5] w-full max-w-sm overflow-hidden rounded-[1.5rem] bg-gradient-to-br from-[#dab39e] via-[#c4a08a] to-[#8b7355] shadow-2xl shadow-[#3d2f29]/20 sm:max-w-md sm:rounded-[2rem]">
-              <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(255,255,255,0.3),transparent_60%)]" />
-              <div className="absolute inset-x-4 bottom-4 rounded-2xl bg-white/90 p-4 backdrop-blur-md sm:inset-x-6 sm:bottom-6 sm:p-5">
-                <p className="text-[10px] font-semibold uppercase tracking-[0.3em] text-[#8b7355]">
-                  Em destaque
-                </p>
-                <p className="mt-1 font-[family-name:var(--font-display)] text-lg font-semibold text-[#3d2f29] sm:text-xl">
-                  Ritual de skin care francês
-                </p>
-                <p className="mt-1 text-xs text-[#7a6a62] sm:text-sm">
-                  Texturas leves, fórmulas que respeitam a pele.
-                </p>
+          <div className="fade-up-delay-1 relative">
+            <div className="relative mx-auto w-full max-w-[34rem]">
+              <div className="absolute -top-3 left-8 z-20 rounded-full border border-white/70 bg-[#fffdfb]/95 px-4 py-2 text-[10px] font-semibold uppercase tracking-[0.26em] text-[#9a7a68] shadow-[0_12px_40px_-12px_rgba(59,43,39,0.25)] backdrop-blur-md">
+                Best seller
               </div>
-              <div className="absolute -top-2 right-2 rounded-full bg-white px-3 py-1.5 text-[10px] font-semibold uppercase tracking-[0.2em] text-[#8b7355] shadow-lg sm:-top-3 sm:right-auto sm:left-auto sm:-right-3 sm:px-4 sm:py-2 sm:text-xs">
-                Novo
-              </div>
-            </div>
-            {/* Floating chip */}
-            <div className="absolute -bottom-4 -left-4 hidden rounded-2xl border border-[#e8ddd6] bg-white p-4 shadow-xl xl:block">
-              <div className="flex items-center gap-3">
-                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#f5ebe6]">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#8b7355" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
-                  </svg>
+
+              <div className="group relative overflow-hidden rounded-[2.25rem] border border-white/55 bg-[radial-gradient(ellipse_95%_75%_at_50%_-5%,#e5c4b6_0%,#c89684_42%,#7d5e54_100%)] p-6 shadow-[0_28px_70px_-20px_rgba(59,43,39,0.22),0_2px_0_rgba(255,255,255,0.35)_inset] transition-shadow duration-500 hover:shadow-[0_36px_90px_-24px_rgba(59,43,39,0.28),0_2px_0_rgba(255,255,255,0.35)_inset] sm:p-8">
+                <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_30%_12%,rgba(255,255,255,0.5),transparent_32%)]" />
+                <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(165deg,transparent_40%,rgba(45,32,28,0.12)_100%)]" />
+
+                <div className="absolute right-4 top-5 z-10 hidden max-w-[11.5rem] rounded-2xl border border-white/60 bg-white/[0.93] p-3.5 shadow-[0_10px_36px_-14px_rgba(59,43,39,0.18)] backdrop-blur-md md:block">
+                  <p className="text-[13px] font-semibold leading-snug text-[#3b2b27]">Sem testes em animais</p>
+                  <p className="mt-1 text-[11px] leading-relaxed text-[#7a6660]">Beleza consciente e delicada.</p>
                 </div>
-                <div>
-                  <p className="text-xs font-semibold text-[#3d2f29]">Cuidado com você</p>
-                  <p className="text-[11px] text-[#7a6a62]">Sem testes em animais</p>
+
+                <div className="relative flex min-h-[24rem] flex-col items-center justify-end pt-6 sm:min-h-[27rem] sm:pt-4">
+                  <div className="absolute left-1 top-16 h-48 w-32 rounded-[2rem] bg-white/25 blur-3xl" aria-hidden />
+                  <div className="absolute right-0 top-24 h-56 w-36 rounded-[2rem] bg-[#fceee8]/30 blur-3xl" aria-hidden />
+
+                  <HeroProductCards />
+                </div>
+
+                <div className="relative mt-5 rounded-[1.35rem] border border-white/70 bg-white/[0.94] p-5 shadow-[0_8px_32px_-18px_rgba(59,43,39,0.12)] backdrop-blur-xl sm:mt-6 sm:rounded-[1.5rem] sm:p-6">
+                  <p className="mb-5 flex items-center gap-2 border-b border-[#f3ebe6] pb-4 text-[12px] font-medium text-[#5f4b45] md:hidden">
+                    <span className="inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[#f1dfd6] text-[11px]" aria-hidden>
+                      ✓
+                    </span>
+                    <span>
+                      Sem testes em animais — <span className="font-normal text-[#7a6660]">beleza consciente</span>
+                    </span>
+                  </p>
+                  <div className="grid gap-6 md:grid-cols-[minmax(0,11.5rem)_1fr] md:items-start md:gap-8">
+                    <div className="md:border-r md:border-[#efe4dd] md:pr-7">
+                      <p className="text-[10px] font-semibold uppercase tracking-[0.26em] text-[#b8927a]">
+                        Cuidado sensorial
+                      </p>
+                      <p className="mt-2 text-xs leading-relaxed text-[#65554e] sm:text-[13px] sm:leading-relaxed">
+                        Produtos selecionados para transformar a rotina em um momento de prazer.
+                      </p>
+                    </div>
+                    <div className="relative min-w-0">
+                      <div className="absolute right-0 top-0 rounded-full bg-[#f1dfd6] px-3 py-1 text-[11px] font-semibold text-[#8b7355] ring-1 ring-[#e8d5cd]/80">
+                        Novo
+                      </div>
+                      <p className="pr-16 text-[10px] font-semibold uppercase tracking-[0.28em] text-[#8b7355]">
+                        Em destaque
+                      </p>
+                      <p className="mt-2 font-[family-name:var(--font-display)] text-xl font-semibold leading-tight text-[#3b2b27] sm:text-[1.35rem]">
+                        Ritual de luminosidade
+                      </p>
+                      <p className="mt-2 text-sm leading-relaxed text-[#6b5c54]">
+                        Óleos leves, séruns delicados e fórmulas pensadas para uma pele viçosa e elegante.
+                      </p>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
       </section>
+
 
       {/* BENEFITS */}
       <section className="border-b border-[#e8ddd6] bg-white">

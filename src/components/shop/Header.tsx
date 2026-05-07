@@ -257,7 +257,7 @@ export function Header({
               <button
                 type="button"
                 onClick={onOpenCart}
-                className="relative flex h-11 w-11 shrink-0 items-center justify-center rounded-full text-[#3d2f29] transition-colors hover:bg-[#f0e8e2] active:bg-[#e8ddd6]"
+                className="relative flex h-11 w-11 shrink-0 items-center justify-center rounded-full text-[#3d2f29] transition-colors hover:bg-[#f0e8e2] active:bg-[#e8ddd6] cursor-pointer"
                 aria-label={`Abrir carrinho${totalQty > 0 ? ` (${totalQty} itens)` : ""}`}
               >
                 <svg
