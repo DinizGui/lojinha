@@ -73,6 +73,8 @@ export function Header({
   const headerRef = useRef<HTMLElement | null>(null);
 
   const compactMobile = narrowViewport && scrolled;
+  /** Desktop (lg+): ao rolar, header mais baixo — mesma ideia do mobile compacto. */
+  const compactDesktop = !narrowViewport && scrolled;
 
   useEffect(() => {
     function onScroll() {
@@ -157,7 +159,11 @@ export function Header({
       ref={headerRef}
       className="fixed top-0 left-0 right-0 z-40 w-full max-w-none"
     >
-      <div className="bg-[#3d2f29] text-[#f5ebe6]">
+      <div
+        className={`overflow-hidden bg-[#3d2f29] text-[#f5ebe6] transition-[max-height,opacity] duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] ${
+          compactDesktop ? "pointer-events-none max-h-0 opacity-0" : "max-h-24 opacity-100"
+        }`}
+      >
         <div className="mx-auto flex max-w-7xl items-center justify-center gap-4 px-3 py-2 text-[10px] font-medium uppercase tracking-[0.18em] sm:gap-6 sm:px-4 sm:text-[11px] sm:tracking-[0.22em] sm:justify-between">
           <p className="truncate text-center">
             ✦ Frete grátis acima de R$ 199 · Parcelamos em 6×
@@ -172,11 +178,15 @@ export function Header({
         }`}
       >
         <div
-          className={`mx-auto max-w-7xl px-4 sm:px-5 lg:px-5 lg:pt-5 lg:pb-0 transition-[padding] duration-300 ${
-            compactMobile ? "pb-2 pt-2 sm:px-5" : "pb-0 pt-4 sm:pt-4"
+          className={`mx-auto max-w-7xl px-4 transition-[padding] duration-300 ease-out sm:px-5 lg:px-5 ${
+            compactMobile
+              ? "pb-2 pt-2 sm:px-5"
+              : compactDesktop
+                ? "pb-0 pt-4 sm:pt-4 lg:pb-2 lg:pt-2"
+                : "pb-0 pt-4 sm:pt-4 lg:pb-0 lg:pt-5"
           }`}
         >
-          {/* Linha 1: mobile compacto ao rolar (logo à esquerda como com barra visível + ícone busca); desktop inalterado */}
+          {/* Linha 1: mobile compacto ao rolar; desktop compacto ao rolar (padding menor + logo menor) */}
           <div className="relative flex min-h-[52px] items-center justify-between gap-2 sm:min-h-0 lg:min-h-0 lg:gap-3">
             <div className="flex min-w-0 flex-1 items-center gap-3 sm:gap-3 lg:flex-none lg:gap-4">
               <button
@@ -202,7 +212,11 @@ export function Header({
                 className="group flex min-w-0 items-center gap-2.5 text-[#5c4a42] transition-opacity hover:opacity-90 sm:gap-2.5 lg:gap-3"
                 aria-label={`Início — ${storeName}`}
               >
-                <span className="relative inline-block h-10 w-10 shrink-0 overflow-hidden rounded-full ring-1 ring-[#e0d5cd]/90 transition-transform duration-300 group-hover:scale-[1.03] sm:h-11 sm:w-11 lg:h-12 lg:w-12">
+                <span
+                  className={`relative inline-block h-10 w-10 shrink-0 overflow-hidden rounded-full ring-1 ring-[#e0d5cd]/90 transition-[transform,width,height] duration-300 ease-out group-hover:scale-[1.03] sm:h-11 sm:w-11 ${
+                    compactDesktop ? "lg:h-10 lg:w-10" : "lg:h-12 lg:w-12"
+                  }`}
+                >
                   <Image
                     src="/logo.png"
                     alt=""
@@ -225,7 +239,7 @@ export function Header({
 
             <div className="hidden flex-1 justify-center px-4 lg:flex">
               <Suspense fallback={<SearchFallback className="max-w-md" />}>
-                <HeaderSearch className="w-full max-w-md xl:max-w-lg" />
+                <HeaderSearch className="w-full max-w-md xl:max-w-lg" dense={compactDesktop} />
               </Suspense>
             </div>
 
@@ -281,9 +295,14 @@ export function Header({
             </Suspense>
           </div>
 
-          {/* Linha 2: categorias — estilo menu editorial, espaçado */}
+          {/* Linha 2: categorias — recolhe no desktop ao rolar (animação suave) */}
           <nav
-            className="mt-5 hidden border-t border-[#ece3dc] pb-4 pt-4 lg:block"
+            aria-hidden={compactDesktop}
+            className={`hidden overflow-hidden border-[#ece3dc] transition-[max-height,opacity,margin,padding,border-color] duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] lg:block ${
+              compactDesktop
+                ? "pointer-events-none mt-0 max-h-0 border-t-transparent py-0 opacity-0 lg:mt-0"
+                : "mt-5 max-h-[min(50vh,560px)] border-t pb-4 pt-4 opacity-100"
+            }`}
             aria-label="Categorias da loja"
           >
             <ul className="flex flex-wrap items-center justify-center gap-x-8 gap-y-2 xl:gap-x-10">
