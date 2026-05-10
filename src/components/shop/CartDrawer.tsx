@@ -54,8 +54,6 @@ export function CartDrawer({
     };
   }, [open, onClose]);
 
-  if (!open) return null;
-
   const remainingForFree = Math.max(0, FREE_SHIPPING - subtotal);
   const progress = Math.min(100, (subtotal / FREE_SHIPPING) * 100);
 
@@ -63,19 +61,28 @@ export function CartDrawer({
     <>
       <button
         type="button"
-        className="fixed inset-0 z-50 bg-[#3d2f29]/40 backdrop-blur-sm animate-in fade-in"
+        className={`fixed inset-0 z-50 bg-[#3d2f29]/45 backdrop-blur-[3px] transition-[opacity,backdrop-filter] duration-[320ms] ease-out motion-reduce:transition-none ${
+          open ? "opacity-100" : "pointer-events-none opacity-0 backdrop-blur-0"
+        }`}
         aria-label="Fechar carrinho"
+        aria-hidden={!open}
+        tabIndex={open ? 0 : -1}
         onClick={onClose}
       />
       <aside
-        className="fixed right-0 top-0 z-50 flex h-full w-full max-w-md flex-col border-l border-[#e8ddd6] bg-[#faf6f2] shadow-2xl"
+        className={`fixed right-0 top-0 z-50 flex h-full w-full max-w-md flex-col overflow-hidden border-l border-[#e8ddd6] bg-[#faf6f2] shadow-[0_24px_80px_-24px_rgba(61,47,41,0.35)] transition-transform duration-[420ms] ease-[cubic-bezier(0.32,0.72,0,1)] will-change-transform motion-reduce:transition-none ${
+          open ? "translate-x-0" : "pointer-events-none translate-x-full"
+        }`}
         role="dialog"
-        aria-modal="true"
+        aria-modal={open ? "true" : undefined}
+        aria-hidden={!open}
         aria-labelledby="cart-title"
+        inert={!open ? true : undefined}
       >
         {/* Header */}
-        <div className="border-b border-[#e8ddd6] bg-white/80 px-5 py-4 backdrop-blur">
-          <div className="flex items-center justify-between">
+        <div className="relative border-b border-[#e8ddd6] bg-white/85 px-5 py-4 backdrop-blur">
+          <div className="pointer-events-none absolute inset-x-0 top-0 h-24 bg-[radial-gradient(circle_at_18%_0%,rgba(232,200,184,0.36),transparent_55%)]" aria-hidden />
+          <div className="relative flex items-center justify-between">
             <div>
               <p className="text-[10px] font-semibold uppercase tracking-[0.3em] text-[#a89890]">
                 Mon panier
